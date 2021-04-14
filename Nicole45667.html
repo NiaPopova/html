@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="mechoff.min.js"></script>
+<meta charset="utf-8">
+<link rel="stylesheet" type=text/css href="mecho.css">
+<script>
+var T = 1.565;
+var stopTime = 0;
+function main()
+{
+
+	scene = new Mecho();
+	scene.onTime = start;
+	scene.sky = [0,1,1];
+	scene.ground = Mecho.BLACK;
+	a = box ([0,0,0], 13,7,0.5);
+	a.material = Mecho.WHITE;
+	b = box ([0,3.7,0.5],13,0.5,7);
+	b.material = Mecho.WHITE;
+	s1 = box ([-4.5,1.5,0],2,2,0.7);
+	s1.material = Mecho.GREEN; 
+	s2 = box([-1.5,1.5,0],2,2,0.7);
+	s2.material = Mecho.BLUE;
+	s3 = box([1.5,1.5,0],2,2,0.7);
+	s3.material = Mecho.BLACK;
+	s4 = box([4.5,1.5,0],2,2,0.7);
+	s4.material = Mecho.RED;
+	s5 = box([-4.5,-1.5,0],2,2,0.7);
+	s5.material = Mecho.YELLOW;
+	s6 = box([-1.5,-1.5,0],2,2,0.7);
+	s6.material = [1,0,1];
+	s7 = box([1.5,-1.5,0],2,2,0.7);
+	s7.material = [0,1,1];
+	s8 = box([4.5,-1.5,0],2,2,0.7);
+	s8.material = [1,0,0];
+	m=button('start','space',start);
+	
+}
+function start ()
+{
+	//debugger;
+	stopTime = Mecho.dTime + T;
+	if (Mecho.time <= stopTime)
+	{
+		b.rotH = -360/PI*(Mecho.time);
+		b.rotT = -90*sin(Mecho.time);
+	}
+}
+
+</script>
+<style>
+</style>
+<body onload = "main()">
+	<h1>Отварящ се механизъм за кутия за сенки</h1>
+	
+	
+</body>
+</head>
+</html>
